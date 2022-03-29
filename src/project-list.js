@@ -5,7 +5,7 @@ const projectList = () => {
 	};
 	//function to delete obj from list
 
-	return { addProject };
+	return { list, addProject };
 };
 
 export default projectList;
