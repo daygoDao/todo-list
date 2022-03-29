@@ -36,11 +36,16 @@ for (let i = 0; i < listOfProjects.list.length; i++) {
 	const projectDOM = document.createElement('li');
 	// add event listener to catch when project section is clicked
 	const activeList = () => {
+		// clear others
 		console.log('project clicked');
+		for (let i = 0; i < listOfProjects.list.length; i++) {
+			console.log(projectsDOM.children[i].classList.remove('chosenProject'));
+		}
+		projectDOM.classList.add('chosenProject');
 	};
+
 	projectDOM.addEventListener('click', activeList);
 	// highlight project that is active and change highlight when clicked elsewhere
-	projectDOM.classList.add('chosenProject');
 	projectDOM.textContent = listOfProjects.list[i].name;
 	//console.log(listOfProjects.list[i]);
 	projectsDOM.appendChild(projectDOM);
