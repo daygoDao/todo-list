@@ -8,21 +8,27 @@ const task1 = task('yo', 'yo', 1, 2);
 const task2 = task('ayo', 'yoyo', 11, 32);
 
 //testing project obj
-const project1 = project('name');
+const project1 = project('name-of-project1');
+const project2 = project('name-of-project2');
 project1.addTask(task1);
 project1.addTask(task2);
+project2.addTask(task2);
+project2.addTask(task2);
+project2.addTask(task2);
 
 //testing project list
 const listOfProjects = projectList();
 listOfProjects.addProject(project1);
-console.log(listOfProjects);
+listOfProjects.addProject(project2);
+// console.log(listOfProjects);
 
 //////////////////////
 // projects section //
 // display project list
 const projectsDOM = document.querySelector('.projects');
 const projectDOM = document.createElement('li');
-projectDOM.textContent = 'project name';
+projectDOM.textContent = listOfProjects.list[0].name;
+console.log(listOfProjects.list[0]);
 projectsDOM.appendChild(projectDOM);
 
 // add project button
