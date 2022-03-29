@@ -11,6 +11,10 @@ const task2 = task('ayo', 'yoyo', 11, 32);
 const project1 = project('name-of-project1');
 const project2 = project('name-of-project2');
 project1.addTask(task1);
+project1.addTask(task1);
+project1.addTask(task1);
+project1.addTask(task1);
+project1.addTask(task1);
 project1.addTask(task2);
 project2.addTask(task2);
 project2.addTask(task2);
@@ -24,16 +28,17 @@ listOfProjects.addProject(project2);
 
 //////////////////////
 // projects section //
-// display project list
 const projectsDOM = document.querySelector('.projects');
+
+// display project list
 //loop and add projects to the unordered list from the array
 for (let i = 0; i < listOfProjects.list.length; i++) {
 	const projectDOM = document.createElement('li');
 
 	projectDOM.textContent = listOfProjects.list[i].name;
-	console.log(listOfProjects.list[i]);
+	//console.log(listOfProjects.list[i]);
 	projectsDOM.appendChild(projectDOM);
-	console.log(i);
+	//console.log(i);
 }
 
 // add project button
@@ -47,19 +52,22 @@ projectsDOM.appendChild(addProjectButton);
 
 //////////////////
 // task section //
-const taskDOM = document.createElement('li');
+// display task list from current project selected
+for (let i = 0; i < project1.taskArray.length; i++) {
+	const taskDOM = document.createElement('li');
+	taskDOM.classList.add('yoyo');
+	taskDOM.textContent = 'yoyoyo';
+
+	document.querySelector('.content').appendChild(taskDOM);
+	console.log(i);
+}
 
 // add tasks button
-const addTaskButton = document.createElement('button');
-addTaskButton.textContent = '+';
 const taskInfo = () => {
 	console.log('add task button clicked');
 };
-document.querySelector('.content').appendChild(addTaskButton);
-
-// display task list from current project selected
+const addTaskButton = document.createElement('button');
 addTaskButton.addEventListener('click', taskInfo);
-taskDOM.classList.add('yoyo');
-taskDOM.textContent = 'yoyoyo';
+addTaskButton.textContent = '+';
 
-document.querySelector('.content').appendChild(taskDOM);
+document.querySelector('.content').appendChild(addTaskButton);
