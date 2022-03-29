@@ -26,10 +26,15 @@ listOfProjects.addProject(project2);
 // projects section //
 // display project list
 const projectsDOM = document.querySelector('.projects');
-const projectDOM = document.createElement('li');
-projectDOM.textContent = listOfProjects.list[0].name;
-console.log(listOfProjects.list[0]);
-projectsDOM.appendChild(projectDOM);
+//loop and add projects to the unordered list from the array
+for (let i = 0; i < listOfProjects.list.length; i++) {
+	const projectDOM = document.createElement('li');
+
+	projectDOM.textContent = listOfProjects.list[i].name;
+	console.log(listOfProjects.list[i]);
+	projectsDOM.appendChild(projectDOM);
+	console.log(i);
+}
 
 // add project button
 const projectInfo = () => {
