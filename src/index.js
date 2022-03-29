@@ -1,6 +1,7 @@
 import projectList from './project-list';
 import project from './project-object';
 import task from './task-object';
+import resetTasks from './resetTaskDOM';
 import './style.css';
 
 //testing task obj
