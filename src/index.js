@@ -18,7 +18,7 @@ console.log(listOfProjects);
 // something
 const projectsDOM = document.querySelector('.projects');
 const projectDOM = document.createElement('li');
-const element = document.createElement('p');
+const taskDOM = document.createElement('li');
 
 // projects section
 projectDOM.textContent = 'project name';
@@ -35,9 +35,16 @@ addProjectButton.addEventListener('click', projectInfo);
 projectsDOM.appendChild(addProjectButton);
 
 // task section
-element.classList.add('yoyo');
-element.textContent = 'yoyoyo';
+const addTaskButton = document.createElement('button');
+addTaskButton.textContent = '+';
+const taskInfo = () => {
+	console.log('add task button clicked');
+};
+addTaskButton.addEventListener('click', taskInfo);
+taskDOM.classList.add('yoyo');
+taskDOM.textContent = 'yoyoyo';
 
-document.querySelector('.content').appendChild(element);
+document.querySelector('.content').appendChild(taskDOM);
+document.querySelector('.content').appendChild(addTaskButton);
 
 // add tasks button
