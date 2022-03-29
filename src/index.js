@@ -11,7 +11,7 @@ const task2 = task('ayo', 'yoyo', 11, 32);
 const project1 = project('name-of-project1');
 const project2 = project('name-of-project2');
 project1.addTask(task1);
-project1.addTask(task1);
+project1.addTask(task2);
 project1.addTask(task1);
 project1.addTask(task1);
 project1.addTask(task1);
@@ -34,7 +34,13 @@ const projectsDOM = document.querySelector('.projects');
 //loop and add projects to the unordered list from the array
 for (let i = 0; i < listOfProjects.list.length; i++) {
 	const projectDOM = document.createElement('li');
-
+	// add event listener to catch when project section is clicked
+	const activeList = () => {
+		console.log('project clicked');
+	};
+	projectDOM.addEventListener('click', activeList);
+	// highlight project that is active and change highlight when clicked elsewhere
+	projectDOM.classList.add('chosenProject');
 	projectDOM.textContent = listOfProjects.list[i].name;
 	//console.log(listOfProjects.list[i]);
 	projectsDOM.appendChild(projectDOM);
@@ -56,10 +62,10 @@ projectsDOM.appendChild(addProjectButton);
 for (let i = 0; i < project1.taskArray.length; i++) {
 	const taskDOM = document.createElement('li');
 	taskDOM.classList.add('yoyo');
-	taskDOM.textContent = 'yoyoyo';
+	taskDOM.textContent = project1.taskArray[i].title;
 
 	document.querySelector('.content').appendChild(taskDOM);
-	console.log(i);
+	// console.log(i);
 }
 
 // add tasks button

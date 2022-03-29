@@ -17,3 +17,7 @@ main {
 .yoyo {
 	color: red;
 }
+
+.chosenProject {
+	border: 1px solid blue;
+}
