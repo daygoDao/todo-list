@@ -1,8 +1,8 @@
 let task = (title, note, date, priority) => {
-	let title = title;
-	let note = note;
-	let date = date;
-	let priority = priority;
+	title = title;
+	note = note;
+	date = date;
+	priority = priority;
 
 	return { title, note, date, priority };
 };
