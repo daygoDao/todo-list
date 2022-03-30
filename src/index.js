@@ -51,6 +51,7 @@ for (let i = 0; i < listOfProjects.list.length; i++) {
 		}
 		projectDOM.classList.add('chosenProject');
 		findChosenProject();
+		resetTasks();
 		displaytasks();
 	};
 
@@ -64,13 +65,14 @@ for (let i = 0; i < listOfProjects.list.length; i++) {
 
 function findChosenProject() {
 	// console.log(document.querySelector('.projects').children[i].className);
-	for (let i = 0; i < listOfProjects.list; i++) {
+	for (let i = 0; i < listOfProjects.list.length; i++) {
+		console.log('within findChosenProject', i);
 		if (
 			document.querySelector('.projects').children[i].className ==
 			'chosenProject'
 		) {
-			console.log('found a chosen one');
 			listOfProjects.chosenProjectIndex = i;
+			console.log('found a chosen one, index at', i);
 		}
 	}
 }

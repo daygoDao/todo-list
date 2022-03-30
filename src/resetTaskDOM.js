@@ -1,5 +1,5 @@
 function resetTasks() {
-	let content = document.querySelector('#content');
+	let content = document.querySelector('.content');
 	while (content.firstChild) {
 		content.removeChild(content.firstChild);
 	}
