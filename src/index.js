@@ -35,7 +35,6 @@ const projectsDOM = document.querySelector('.projects');
 if (!localStorage.getItem('projectList')) {
 	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 }
-// localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 
 // display project list
 //loop and add projects to the unordered list from the array
@@ -76,11 +75,12 @@ function findChosenProject() {
 		}
 	}
 }
-///
-
 // add project button
 const projectInfo = () => {
+	const project3 = project('chieet');
+	listOfProjects.addProject(project3);
 	console.log('addProjectButton clicked');
+	console.log(listOfProjects);
 };
 let addProjectButton = document.createElement('button');
 addProjectButton.textContent = '+';
@@ -109,11 +109,11 @@ function displaytasks() {
 	}
 
 	// add tasks button
-	const taskInfo = () => {
+	const addTaskInfo = () => {
 		console.log('add task button clicked');
 	};
 	const addTaskButton = document.createElement('button');
-	addTaskButton.addEventListener('click', taskInfo);
+	addTaskButton.addEventListener('click', addTaskInfo);
 	addTaskButton.textContent = '+';
 
 	document.querySelector('.content').appendChild(addTaskButton);
