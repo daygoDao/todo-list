@@ -28,33 +28,14 @@ listOfProjects.addProject(project2);
 
 ///////////////////////
 // projects section //
-const projectsDOM = document.querySelector('.projects');
-
 // localStorage
 if (!localStorage.getItem('projectList')) {
 	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 }
 
+// init display project list and butt to DOM
 listOfProjects.addProjectListDOM(projectsDOM);
-
-// add project button
-const addProjectInfo = () => {
-	let name = prompt('name of project?', 'folder');
-	const projecto = project(name);
-	listOfProjects.addProject(projecto);
-	//update localStorage
-	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
-	//update DOM
-
-	console.log('addProjectButton clicked');
-	console.log(listOfProjects);
-};
-
-// add button to dom
-let addProjectButton = document.createElement('button');
-addProjectButton.textContent = '+';
-addProjectButton.addEventListener('click', addProjectInfo);
-projectsDOM.appendChild(addProjectButton);
+listOfProjects.addProjectButt();
 
 //display to page initally the tasks of the first project
 listOfProjects.list[0].displaytasks(listOfProjects);

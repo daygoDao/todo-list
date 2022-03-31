@@ -1,4 +1,6 @@
+import project from './project-object';
 import resetTasks from './resetTaskDOM';
+import resetProjectList from './resetProjectListDOM';
 
 const projectList = () => {
 	let chosenProjectIndex = 0;
@@ -6,6 +8,35 @@ const projectList = () => {
 	const addProject = (projectObj) => {
 		list.push(projectObj);
 	};
+
+	// button to add project to list//
+	// add project button helper
+	const addProjectInfo = () => {
+		let name = prompt('name of project?', 'folder');
+		const projectsDOM = document.querySelector('.projects');
+		const projecto = project(name);
+
+		addProject(projecto);
+		//update localStorage
+		localStorage.setItem('projectList', JSON.stringify(list));
+		//update DOM
+		resetProjectList();
+		addProjectListDOM(projectsDOM);
+
+		console.log('addProjectButton clicked');
+		console.log(list);
+		console.log('yee');
+	};
+	// add button to dom
+	const addProjectButt = () => {
+		const projectsDOM = document.querySelector('.projects');
+		const addProjectButton = document.createElement('button');
+
+		addProjectButton.textContent = '+';
+		addProjectButton.addEventListener('click', addProjectInfo);
+		projectsDOM.appendChild(addProjectButton);
+	};
+
 	//functions to display list to DOM
 	const addProjectListDOM = (projectsDOM) => {
 		for (let i = 0; i < list.length; i++) {
@@ -28,6 +59,7 @@ const projectList = () => {
 			projectDOM.textContent = list[i].name;
 			projectsDOM.appendChild(projectDOM);
 		}
+		addProjectButt();
 	};
 
 	// highlight active folder
@@ -44,9 +76,16 @@ const projectList = () => {
 			}
 		}
 	};
+
 	//function to delete obj from list
 
-	return { chosenProjectIndex, list, addProject, addProjectListDOM };
+	return {
+		chosenProjectIndex,
+		list,
+		addProject,
+		addProjectListDOM,
+		addProjectButt,
+	};
 };
 
 export default projectList;
