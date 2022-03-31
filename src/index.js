@@ -38,7 +38,7 @@ if (!localStorage.getItem('projectList')) {
 
 // display project list
 //loop and add projects to the unordered list from the array
-let addProjectListDOM = (projectsDOM, listOfProjects) => {
+/* let addProjectListDOM = (projectsDOM, listOfProjects) => {
 	for (let i = 0; i < listOfProjects.list.length; i++) {
 		const projectDOM = document.createElement('li');
 
@@ -61,23 +61,9 @@ let addProjectListDOM = (projectsDOM, listOfProjects) => {
 		projectDOM.textContent = listOfProjects.list[i].name;
 		projectsDOM.appendChild(projectDOM);
 	}
-};
+}; */
 //vars used
-addProjectListDOM(projectsDOM, listOfProjects);
-
-function findChosenProject() {
-	// console.log(document.querySelector('.projects').children[i].className);
-	for (let i = 0; i < listOfProjects.list.length; i++) {
-		console.log('within findChosenProject', i);
-		if (
-			document.querySelector('.projects').children[i].className ==
-			'chosenProject'
-		) {
-			listOfProjects.chosenProjectIndex = i;
-			console.log('found a chosen one, index at', i);
-		}
-	}
-}
+listOfProjects.addProjectListDOM(projectsDOM);
 
 // add project button
 const addProjectInfo = () => {

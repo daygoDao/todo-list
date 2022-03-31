@@ -12,20 +12,12 @@ const project = (name) => {
 	// display task list from current project selected
 	//console.log(document.querySelector('.chosenProject'));
 	// displaytasks();
-	const displaytasks = (listOfProjects) => {
-		for (
-			let i = 0;
-			i <
-			listOfProjects.list[listOfProjects.chosenProjectIndex].taskArray.length;
-			i++
-		) {
-			//document.querySelector();
+	const displaytasks = () => {
+		for (let i = 0; i < taskArray.length; i++) {
 			const taskDOM = document.createElement('li');
 			taskDOM.classList.add('task');
-			taskDOM.textContent = listOfProjects.list[0].taskArray[i].title;
-
+			taskDOM.textContent = taskArray[i].title;
 			document.querySelector('.content').appendChild(taskDOM);
-			// console.log(i);
 		}
 
 		// add tasks button
