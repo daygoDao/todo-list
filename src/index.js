@@ -51,7 +51,10 @@ for (let i = 0; i < listOfProjects.list.length; i++) {
 		projectDOM.classList.add('chosenProject');
 		findChosenProject();
 		resetTasks();
-		displaytasks();
+		//display tasks
+		listOfProjects.list[listOfProjects.chosenProjectIndex].displaytasks(
+			listOfProjects
+		);
 	};
 
 	projectDOM.addEventListener('click', activeList);
@@ -76,7 +79,7 @@ function findChosenProject() {
 	}
 }
 // add project button
-const projectInfo = () => {
+const addProjectInfo = () => {
 	const project3 = project('chieet');
 	listOfProjects.addProject(project3);
 	console.log('addProjectButton clicked');
@@ -84,37 +87,7 @@ const projectInfo = () => {
 };
 let addProjectButton = document.createElement('button');
 addProjectButton.textContent = '+';
-addProjectButton.addEventListener('click', projectInfo);
+addProjectButton.addEventListener('click', addProjectInfo);
 projectsDOM.appendChild(addProjectButton);
 
-///////////////////
-// task section //
-
-// display task list from current project selected
-//console.log(document.querySelector('.chosenProject'));
-// displaytasks();
-function displaytasks() {
-	for (
-		let i = 0;
-		i < listOfProjects.list[listOfProjects.chosenProjectIndex].taskArray.length;
-		i++
-	) {
-		//document.querySelector();
-		const taskDOM = document.createElement('li');
-		taskDOM.classList.add('task');
-		taskDOM.textContent = project1.taskArray[i].title;
-
-		document.querySelector('.content').appendChild(taskDOM);
-		// console.log(i);
-	}
-
-	// add tasks button
-	const addTaskInfo = () => {
-		console.log('add task button clicked');
-	};
-	const addTaskButton = document.createElement('button');
-	addTaskButton.addEventListener('click', addTaskInfo);
-	addTaskButton.textContent = '+';
-
-	document.querySelector('.content').appendChild(addTaskButton);
-}
+listOfProjects.list[0].displaytasks(listOfProjects);
