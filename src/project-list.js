@@ -38,7 +38,8 @@ const projectList = () => {
 	};
 
 	//functions to display list to DOM
-	const addProjectListDOM = (projectsDOM) => {
+	const addProjectListDOM = () => {
+		const projectsDOM = document.querySelector('.projects');
 		for (let i = 0; i < list.length; i++) {
 			const projectDOM = document.createElement('li');
 

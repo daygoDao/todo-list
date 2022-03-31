@@ -3,13 +3,13 @@ import project from './project-object';
 import task from './task-object';
 import './style.css';
 
-//testing task obj
+// demo task obj
 const task1 = task('yo', 'yo', 1, 2);
 const task2 = task('ayo', 'yoyo', 11, 32);
 
-//testing project obj
+// demo project obj
 const project1 = project('demo project');
-const project2 = project('name-of-project2');
+const project2 = project('project 2, demo demi glace');
 project1.addTask(task1);
 project1.addTask(task1);
 project1.addTask(task1);
@@ -20,11 +20,10 @@ project2.addTask(task2);
 project2.addTask(task2);
 project2.addTask(task2);
 
-//testing project list
+// demo project list
 const listOfProjects = projectList();
 listOfProjects.addProject(project1);
 listOfProjects.addProject(project2);
-// console.log(listOfProjects);
 
 ///////////////////////
 // projects section //
@@ -34,8 +33,9 @@ if (!localStorage.getItem('projectList')) {
 }
 
 // init display project list and butt to DOM
-listOfProjects.addProjectListDOM(projectsDOM);
-listOfProjects.addProjectButt();
+// const projectsDOM = document.querySelector('.projects');
+listOfProjects.addProjectListDOM();
+//listOfProjects.addProjectButt();
 
 //display to page initally the tasks of the first project
 listOfProjects.list[0].displaytasks(listOfProjects);
