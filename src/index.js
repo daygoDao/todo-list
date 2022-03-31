@@ -1,7 +1,6 @@
 import projectList from './project-list';
 import project from './project-object';
 import task from './task-object';
-import resetTasks from './resetTaskDOM';
 import './style.css';
 
 //testing task obj
@@ -36,33 +35,6 @@ if (!localStorage.getItem('projectList')) {
 	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 }
 
-// display project list
-//loop and add projects to the unordered list from the array
-/* let addProjectListDOM = (projectsDOM, listOfProjects) => {
-	for (let i = 0; i < listOfProjects.list.length; i++) {
-		const projectDOM = document.createElement('li');
-
-		// add event listener to catch when project section is clicked
-		const activeList = (e) => {
-			console.log('project clicked');
-			//console.log(e);
-			for (let i = 0; i < listOfProjects.list.length; i++) {
-				projectsDOM.children[i].classList.remove('chosenProject');
-			}
-			projectDOM.classList.add('chosenProject');
-			findChosenProject();
-			resetTasks();
-			// display tasks when said project is clicked
-			listOfProjects.list[listOfProjects.chosenProjectIndex].displaytasks(
-				listOfProjects
-			);
-		};
-		projectDOM.addEventListener('click', activeList);
-		projectDOM.textContent = listOfProjects.list[i].name;
-		projectsDOM.appendChild(projectDOM);
-	}
-}; */
-//vars used
 listOfProjects.addProjectListDOM(projectsDOM);
 
 // add project button
