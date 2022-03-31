@@ -56,6 +56,5 @@ addProjectButton.textContent = '+';
 addProjectButton.addEventListener('click', addProjectInfo);
 projectsDOM.appendChild(addProjectButton);
 
-//
 //display to page initally the tasks of the first project
 listOfProjects.list[0].displaytasks(listOfProjects);
