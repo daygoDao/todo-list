@@ -18,6 +18,21 @@
 			<section class="taskSection">
 				<h2>task section</h2>
 				<ul class="content"></ul>
+				<dialog class="modal" id="modal">
+					<button class="close-modal">close</button>
+					<form method="dialog" id="newTask">
+						<label for="name">task name</label>
+						<input type="text" id="name" name="name" />
+
+						<label for="note">task name</label>
+						<input type="text" id="note" name="note" />
+
+						<label for="date">task name</label>
+						<input type="date" id="date" name="date" />
+
+						<button class="addTask" type="submit">submit</button>
+					</form>
+				</dialog>
 			</section>
 		</main>
 		<script src="./main.js"></script>

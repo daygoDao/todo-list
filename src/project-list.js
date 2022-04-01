@@ -4,7 +4,8 @@ import resetProjectList from './resetProjectListDOM';
 
 const projectList = () => {
 	let chosenProjectIndex = 0;
-	const list = []; //to be used to store project objects
+	let list = []; //to be used to store project objects
+
 	const addProject = (projectObj) => {
 		list.push(projectObj);
 	};
@@ -21,12 +22,12 @@ const projectList = () => {
 		localStorage.setItem('projectList', JSON.stringify(list));
 		//update DOM
 		resetProjectList();
-		addProjectListDOM(projectsDOM);
+		addProjectListDOM();
 
 		console.log('addProjectButton clicked');
 		console.log(list);
-		console.log('yee');
 	};
+
 	// add button to dom
 	const addProjectButt = () => {
 		const projectsDOM = document.querySelector('.projects');
@@ -37,9 +38,15 @@ const projectList = () => {
 		projectsDOM.appendChild(addProjectButton);
 	};
 
-	//functions to display list to DOM
+	// add project to list and display on DOM
 	const addProjectListDOM = () => {
+		const localList = JSON.parse(localStorage.getItem('projectList'));
+		list = localList;
+		console.log(localList);
+		console.log(list);
 		const projectsDOM = document.querySelector('.projects');
+		console.log(`from addProjectListDOM, the list content is ${localList}`);
+
 		for (let i = 0; i < list.length; i++) {
 			const projectDOM = document.createElement('li');
 
@@ -77,6 +84,11 @@ const projectList = () => {
 			}
 		}
 	};
+
+	// update added task to local storage
+	/* 	const addTaskToProject = () => {
+		list[chosenProjectIndex].addTask();
+	}; */
 
 	//function to delete obj from list
 

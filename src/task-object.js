@@ -1,8 +1,9 @@
-let task = (title, note, date, priority) => {
+let task = (title, note, date) => {
 	title = title;
 	note = note;
 	date = date;
-	priority = priority;
+
+	let priority = 0;
 
 	return { title, note, date, priority };
 };

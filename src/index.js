@@ -32,10 +32,10 @@ if (!localStorage.getItem('projectList')) {
 	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 }
 
+// window.onload()
+
 // init display project list and butt to DOM
-// const projectsDOM = document.querySelector('.projects');
 listOfProjects.addProjectListDOM();
-//listOfProjects.addProjectButt();
 
 //display to page initally the tasks of the first project
 listOfProjects.list[0].displaytasks(listOfProjects);
