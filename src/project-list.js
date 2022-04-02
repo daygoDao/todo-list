@@ -137,6 +137,10 @@ const projectList = () => {
 		localStorage.setItem('projectList', JSON.stringify(list));
 		list[chosenProjectIndex].displaytasks();
 		addTaskButt();
+		// reset modal form
+		form.elements[0].value = '';
+		form.elements[1].value = '';
+		form.elements[2].value = '';
 	};
 
 	// init display
