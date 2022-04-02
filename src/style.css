@@ -27,3 +27,18 @@ main {
 	grid-template-columns: 1fr 1fr 1fr;
 	justify-items: center;
 }
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.content li {
+	border: 1px solid red;
+}
+
+.task {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+}

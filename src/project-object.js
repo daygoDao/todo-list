@@ -17,11 +17,21 @@ const project = (name) => {
 		resetTasks();
 		for (let i = 0; i < taskArray.length; i++) {
 			const taskDOM = document.createElement('li');
+			const taskTitle = document.createElement('span');
+			const taskNote = document.createElement('span');
+			const taskDate = document.createElement('span');
+
 			taskDOM.classList.add('task');
-			taskDOM.textContent = taskArray[i].title;
+
+			taskTitle.textContent = taskArray[i].title;
+			taskNote.textContent = taskArray[i].note;
+			taskDate.textContent = taskArray[i].date;
+			taskDOM.appendChild(taskTitle);
+			taskDOM.appendChild(taskNote);
+			taskDOM.appendChild(taskDate);
+
 			document.querySelector('.content').appendChild(taskDOM);
 		}
-		// addTaskButt();
 	};
 
 	return { name, taskArray, addTask, displaytasks };
