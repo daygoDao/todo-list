@@ -1,51 +1,52 @@
 header {
-	border: 5px solid lightgreen;
+  border: 5px solid lightgreen;
+  text-align: center;
 }
 
 main {
-	display: grid;
-	grid-template-columns: 1fr 3fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 .projects {
-	border: 5px solid lightblue;
+  border: 5px solid lightblue;
 }
 
 .content {
-	border: 5px solid salmon;
+  border: 5px solid salmon;
 }
 
 .yoyo {
-	color: red;
+  color: red;
 }
 
 .chosenProject {
-	background-color: yellow;
+  background-color: yellow;
 }
 
 .task-header {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	padding-left: 1rem;
-	/* justify-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 1rem;
+  /* justify-items: center; */
 }
 
 .projectList h2 {
-	padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 ul {
-	list-style: none;
-	padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .content li,
 .projects li {
-	border: 1px dotted lightgray;
-	padding-left: 1rem;
+  border: 1px dotted lightgray;
+  padding-left: 1rem;
 }
 
 .task {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	/* justify-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* justify-items: center; */
 }
