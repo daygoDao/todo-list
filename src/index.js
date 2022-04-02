@@ -38,4 +38,5 @@ if (!localStorage.getItem('projectList')) {
 listOfProjects.addProjectListDOM();
 
 //display to page initally the tasks of the first project
-listOfProjects.list[0].displaytasks(listOfProjects);
+/* listOfProjects.list[0].displaytasks(listOfProjects);
+listOfProjects.addTaskButt(); */

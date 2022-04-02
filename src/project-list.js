@@ -39,44 +39,31 @@ const projectList = () => {
 		projectsDOM.appendChild(addProjectButton);
 	};
 
-	// update list from local to this object
+	// update list from localStorage to this object
 	const getLocalList = () => {
 		const localList = JSON.parse(localStorage.getItem('projectList'));
+
 		// convert each element from local storage as product object
 		let tempProjectList = [];
 		for (let i = 0; i < localList.length; i++) {
-			//console.log(localList[i]);
-			// list[i] = project(localList[i].name);
 			tempProjectList.push(project(localList[i].name));
 			for (let j = 0; j < localList[i].taskArray.length; j++) {
 				let title = localList[i].taskArray[j].title;
 				let note = localList[i].taskArray[j].note;
 				let date = localList[i].taskArray[j].date;
-				//console.log('ayo');
 				const newTask = task(title, note, date);
 				tempProjectList[i].addTask(newTask);
 			}
 		}
-		console.log('this is the temp PL', tempProjectList);
 		list = tempProjectList;
 	};
 
 	// add project to list and display on DOM
 	const addProjectListDOM = () => {
-		const localList = JSON.parse(localStorage.getItem('projectList'));
-		// convert each element from local storage as product object
-		/* for (let i = 0; i < localList.length; i++) {
-			console.log(localList[i]);
-		} */
-		console.log(list);
-
-		getLocalList();
-
-		console.log(list);
-
 		const projectsDOM = document.querySelector('.projects');
-		//console.log(`from addProjectListDOM, the list content is ${localList}`);
-
+		// convert each element from local storage as product object
+		getLocalList();
+		// display each project to DOM
 		for (let i = 0; i < list.length; i++) {
 			const projectDOM = document.createElement('li');
 
@@ -89,9 +76,10 @@ const projectList = () => {
 				}
 				projectDOM.classList.add('chosenProject');
 				findChosenProject();
-				resetTasks();
+				//resetTasks();
 				// display tasks when said project is clicked
 				list[chosenProjectIndex].displaytasks();
+				addTaskButt();
 			};
 			projectDOM.addEventListener('click', activeList);
 			projectDOM.textContent = list[i].name;
@@ -115,10 +103,44 @@ const projectList = () => {
 		}
 	};
 
+	// add tasks button
+	let addTaskButt = () => {
+		const modal = document.querySelector('#modal');
+		const closeModal = document.querySelector('.close-modal');
+		const submitTask = document.querySelector('.addTask');
+		const addTaskButton = document.createElement('button');
+
+		addTaskButton.textContent = '+';
+		addTaskButton.classList.add('open-modal');
+		// addTaskButton.addEventListener('click', addTaskInfo);
+		document.querySelector('.content').appendChild(addTaskButton);
+
+		addTaskButton.addEventListener('click', () => {
+			console.log('yo from open modal');
+			modal.showModal();
+		});
+		closeModal.addEventListener('click', () => {
+			console.log('yo from close modal');
+			modal.close();
+		});
+		submitTask.addEventListener('click', addTaskInfo);
+	};
+
 	// update added task to local storage
-	/* 	const addTaskToProject = () => {
-		list[chosenProjectIndex].addTask();
-	}; */
+	// when task button is clicked it will open a form modal
+	const addTaskInfo = () => {
+		const form = document.getElementById('newTask');
+		console.log('yo from submit modal');
+		const name = form.elements[0].value;
+		const note = form.elements[1].value;
+		const date = form.elements[2].value;
+		const newTask = task(name, note, date);
+		list[chosenProjectIndex].addTask(newTask);
+		// update localStorage
+		localStorage.setItem('projectList', JSON.stringify(list));
+		list[chosenProjectIndex].displaytasks();
+		addTaskButt();
+	};
 
 	//function to delete obj from list
 
@@ -128,6 +150,7 @@ const projectList = () => {
 		addProject,
 		addProjectListDOM,
 		addProjectButt,
+		addTaskButt,
 	};
 };
 
