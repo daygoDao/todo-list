@@ -16,9 +16,9 @@ project1.addTask(task1);
 project1.addTask(task1);
 project1.addTask(task1);
 project1.addTask(task2);
+project2.addTask(task1);
 project2.addTask(task2);
-project2.addTask(task2);
-project2.addTask(task2);
+project2.addTask(task1);
 
 // demo project list
 const listOfProjects = projectList();

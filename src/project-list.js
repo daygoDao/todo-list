@@ -1,4 +1,5 @@
 import project from './project-object';
+import task from './task-object';
 import resetTasks from './resetTaskDOM';
 import resetProjectList from './resetProjectListDOM';
 
@@ -38,14 +39,43 @@ const projectList = () => {
 		projectsDOM.appendChild(addProjectButton);
 	};
 
+	// update list from local to this object
+	const getLocalList = () => {
+		const localList = JSON.parse(localStorage.getItem('projectList'));
+		// convert each element from local storage as product object
+		let tempProjectList = [];
+		for (let i = 0; i < localList.length; i++) {
+			//console.log(localList[i]);
+			// list[i] = project(localList[i].name);
+			tempProjectList.push(project(localList[i].name));
+			for (let j = 0; j < localList[i].taskArray.length; j++) {
+				let title = localList[i].taskArray[j].title;
+				let note = localList[i].taskArray[j].note;
+				let date = localList[i].taskArray[j].date;
+				//console.log('ayo');
+				const newTask = task(title, note, date);
+				tempProjectList[i].addTask(newTask);
+			}
+		}
+		console.log('this is the temp PL', tempProjectList);
+		list = tempProjectList;
+	};
+
 	// add project to list and display on DOM
 	const addProjectListDOM = () => {
 		const localList = JSON.parse(localStorage.getItem('projectList'));
-		list = localList;
-		console.log(localList);
+		// convert each element from local storage as product object
+		/* for (let i = 0; i < localList.length; i++) {
+			console.log(localList[i]);
+		} */
 		console.log(list);
+
+		getLocalList();
+
+		console.log(list);
+
 		const projectsDOM = document.querySelector('.projects');
-		console.log(`from addProjectListDOM, the list content is ${localList}`);
+		//console.log(`from addProjectListDOM, the list content is ${localList}`);
 
 		for (let i = 0; i < list.length; i++) {
 			const projectDOM = document.createElement('li');
