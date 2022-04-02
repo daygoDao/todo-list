@@ -15,7 +15,6 @@ const projectList = () => {
 	// add project button helper
 	const addProjectInfo = () => {
 		let name = prompt('name of project?', 'folder');
-		const projectsDOM = document.querySelector('.projects');
 		const projecto = project(name);
 
 		addProject(projecto);
@@ -24,9 +23,7 @@ const projectList = () => {
 		//update DOM
 		resetProjectList();
 		addProjectListDOM();
-
 		console.log('addProjectButton clicked');
-		console.log(list);
 	};
 
 	// add button to dom
@@ -142,6 +139,19 @@ const projectList = () => {
 		addTaskButt();
 	};
 
+	// init display
+	const initDisplay = () => {
+		addProjectListDOM();
+
+		//display to page initally the tasks of the first project
+		document
+			.querySelector('.projects')
+			.children[0].classList.add('chosenProject');
+		list[0].displaytasks();
+		list[0];
+		addTaskButt();
+	};
+
 	//function to delete obj from list
 
 	return {
@@ -151,6 +161,8 @@ const projectList = () => {
 		addProjectListDOM,
 		addProjectButt,
 		addTaskButt,
+		getLocalList,
+		initDisplay,
 	};
 };
 

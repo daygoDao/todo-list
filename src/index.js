@@ -35,8 +35,13 @@ if (!localStorage.getItem('projectList')) {
 // window.onload()
 
 // init display project list and butt to DOM
+/* let stuff = JSON.parse(localStorage.getItem('projectList'));
+console.log(stuff[0]);
+
 listOfProjects.addProjectListDOM();
 
 //display to page initally the tasks of the first project
-/* listOfProjects.list[0].displaytasks(listOfProjects);
-listOfProjects.addTaskButt(); */
+listOfProjects.list[0].displaytasks();
+listOfProjects.addTaskButt();
+ */
+listOfProjects.initDisplay();
