@@ -19,11 +19,12 @@ const project = (name) => {
       const taskDOM = document.createElement("li");
       const taskTitle = document.createElement("span");
       const taskNote = document.createElement("span");
-      const taskDate = document.createElement("span");
+      const taskDate = document.createElement("input");
 
       taskTitle.classList.add("title");
       taskNote.classList.add("note");
       taskDate.classList.add("date");
+	  taskDate.type = 'date';
 
       taskDOM.classList.add("task");
 
