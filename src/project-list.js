@@ -141,6 +141,7 @@ const projectList = () => {
 		form.elements[0].value = '';
 		form.elements[1].value = '';
 		form.elements[2].value = '';
+		modal.close();
 	};
 
 	// init display
