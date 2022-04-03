@@ -238,8 +238,8 @@ const projectList = () => {
     for (let title of titles) {
       if (title == e.target) {
         console.log("home run");
-        console.log(list[chosenProjectIndex].taskArray[taskIndex]);
-        list[chosenProjectIndex].taskArray[taskIndex].title = newnew;
+        console.log(list[chosenProjectIndex].taskArray[titleIndex]);
+        list[chosenProjectIndex].taskArray[titleIndex].title = newnew;
         // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
       }
       taskIndex++;
@@ -248,15 +248,15 @@ const projectList = () => {
     for (let note of notes) {
       if (note == e.target) {
         console.log("home run");
-        console.log(list[chosenProjectIndex].taskArray[noteIndex]);
-        list[chosenProjectIndex].taskArray[taskIndex].note = newnew;
+        //console.log(list[chosenProjectIndex].taskArray[noteIndex]);
+        list[chosenProjectIndex].taskArray[noteIndex].note = newnew;
         // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
       }
       noteIndex++;
     }
     // const input = document.createElement('input') 
     // input.type = 'date';
-    let dateIndex = 0;
+  /*   let dateIndex = 0;
     for (let date of dates) {
       if (date == e.target) {
         console.log("home run");
@@ -265,15 +265,23 @@ const projectList = () => {
         // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
       }
       dateIndex++;
-    }
+    } */
     // save to localStorage
     localStorage.setItem("projectList", JSON.stringify(list));
   };
 
   const taskUpdate = () => {
-    const tasks = document.querySelectorAll(".title");
-    for (let task of tasks) {
-      task.addEventListener("dblclick", updateTask);
+    const titles = document.querySelectorAll(".title");
+    const notes = document.querySelectorAll(".note");
+    const dates = document.querySelectorAll(".date");
+    for (let title of titles) {
+      title.addEventListener("dblclick", updateTask);
+    }
+    for (let note of notes) {
+      note.addEventListener("dblclick", updateTask);
+    }
+    for (let date of dates) {
+      date.addEventListener("dblclick", updateTask);
     }
   };
 
