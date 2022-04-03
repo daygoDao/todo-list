@@ -91,7 +91,7 @@ const projectList = () => {
       const chosen = document.querySelector(".projects").children[i].className;
       if (chosen.includes("chosenProject")) {
         chosenProjectIndex = i;
-        console.log('chosen proj index is ', chosenProjectIndex)
+        console.log("chosen proj index is ", chosenProjectIndex);
       }
     }
   };
@@ -150,14 +150,15 @@ const projectList = () => {
     addTaskButt();
     deleteProjectButt();
     deleteTaskButt();
-    projectNameUpdate()
+    projectNameUpdate();
   };
 
   const deleteProject = (e) => {
     const projects = document.querySelectorAll(".project");
     let index = 0;
     for (let project of projects) {
-      if (project.children[0] == e.target) {
+      console.log('ayp',project.children[0]);
+      if (project.children[1] == e.target) {
         console.log("in here");
         list.splice(index, 1);
         localStorage.setItem("projectList", JSON.stringify(list));
@@ -209,22 +210,30 @@ const projectList = () => {
   // update project name on DOM and localStorage on click
   const changeProjName = (e) => {
     // console.log(e.target.textContent)
-    let newName = prompt('new name?', e.target.textContent)
+    let newName = prompt("new name?", e.target.textContent);
     e.target.textContent = newName;
     // save to localStorage
-    console.log('changeprojname' ,chosenProjectIndex)
+    console.log("changeprojname", chosenProjectIndex);
     list[chosenProjectIndex].name = newName;
     localStorage.setItem("projectList", JSON.stringify(list));
-  }
+  };
 
   const projectNameUpdate = () => {
     const projects = document.querySelectorAll(".projects span");
     findChosenProject();
 
     for (let proj of projects) {
-      proj.addEventListener('dblclick', changeProjName)
+      proj.addEventListener("dblclick", changeProjName);
     }
-  };
+  }; 
+
+  //update task title, note, date when dbl click
+  /*   const taskTitleUpdate = () => {
+    const tasks = document.querySelectorAll("task");
+    for (let task of tasks) {
+      console.log(task);
+    }
+  }; */
 
   return {
     chosenProjectIndex,
