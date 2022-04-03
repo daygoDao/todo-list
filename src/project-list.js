@@ -70,7 +70,9 @@ const projectList = () => {
         }
         projectDOM.classList.add("chosenProject");
         findChosenProject();
+		console.log(`the chosen project index is ${chosenProjectIndex}`)
         // display tasks when said project is clicked
+        // console.log(chosenProjectIndex);
         list[chosenProjectIndex].displaytasks();
         addTaskButt();
       };
@@ -85,10 +87,8 @@ const projectList = () => {
   // highlight active folder
   const findChosenProject = () => {
     for (let i = 0; i < list.length; i++) {
-      if (
-        document.querySelector(".projects").children[i].className ==
-        "chosenProject"
-      ) {
+      const chosen = document.querySelector(".projects").children[i].className;
+	  if (chosen.includes("chosenProject")) {
         chosenProjectIndex = i;
       }
     }
@@ -138,20 +138,19 @@ const projectList = () => {
   // init display
   const initDisplay = () => {
     addProjectListDOM();
-
     //display to page initally the tasks of the first project
     document
       .querySelector(".projects")
       .children[0].classList.add("chosenProject");
     list[0].displaytasks();
-    list[0];
+
     addTaskButt();
-    deleteProject();
-    deleteTask();
+    deleteProjectButt();
+    deleteTaskButt();
   };
 
   //function to delete obj from list
-  const deleteProject = () => {
+  const deleteProjectButt = () => {
     const projects = document.querySelectorAll(".project");
     for (let project of projects) {
       const delButton = document.createElement("button");
@@ -160,17 +159,32 @@ const projectList = () => {
       project.appendChild(delButton);
     }
   };
+
+  const deleteTask = (e) => {
+    const tasks = document.querySelectorAll(".task");
+    let index = 0;
+    for (let task of tasks) {
+      if (task.children[3] == e.target) {
+        // remove task at this index
+        list.taskArray.splice(index, 1);
+        localStorage.setItem("projectList", JSON.stringify(list));
+      }
+      index++;
+    }
+    //   console.log(e.target)
+  };
   //function to delete obj from list
-  const deleteTask = () => {
-    const projects = document.querySelectorAll(".task");
-    for (let project of projects) {
+  const deleteTaskButt = () => {
+    const tasks = document.querySelectorAll(".task");
+    for (let task of tasks) {
       const delButton = document.createElement("button");
       delButton.classList.add("delTask");
       delButton.textContent = "x";
-
-      project.appendChild(delButton);
+      delButton.addEventListener("click", deleteTask);
+      task.appendChild(delButton);
     }
   };
+
   return {
     chosenProjectIndex,
     list,
