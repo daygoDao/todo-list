@@ -230,10 +230,9 @@ const projectList = () => {
   const updateTask = (e) => {
     const titles = document.querySelectorAll(".title");
     const notes = document.querySelectorAll(".note");
-    const dates = document.querySelectorAll(".date");
+
     let newnew = prompt("new info", e.target.textContent);
     e.target.textContent = newnew;
-
     let taskIndex = 0;
     for (let title of titles) {
       if (title == e.target) {
@@ -254,21 +253,26 @@ const projectList = () => {
       }
       noteIndex++;
     }
-    // const input = document.createElement('input') 
-    // input.type = 'date';
-  /*   let dateIndex = 0;
-    for (let date of dates) {
-      if (date == e.target) {
-        console.log("home run");
-        console.log(list[chosenProjectIndex].taskArray[dateIndex]);
-        list[chosenProjectIndex].taskArray[taskIndex].date = newnew;
-        // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
-      }
-      dateIndex++;
-    } */
     // save to localStorage
     localStorage.setItem("projectList", JSON.stringify(list));
   };
+
+  const updateDate = (e) => {
+    const dates = document.querySelectorAll(".date");
+
+    let newDate = e.target.value;
+    let dateIndex = 0;
+    for (let date of dates) {
+      if (date == e.target) {
+        console.log(newDate);
+        console.log(list[chosenProjectIndex].taskArray[dateIndex]);
+        list[chosenProjectIndex].taskArray[dateIndex].date = newDate;
+      }
+      dateIndex++;
+    }
+    // save to localStorage
+    localStorage.setItem("projectList", JSON.stringify(list));
+  }
 
   const taskUpdate = () => {
     const titles = document.querySelectorAll(".title");
@@ -281,9 +285,11 @@ const projectList = () => {
       note.addEventListener("dblclick", updateTask);
     }
     for (let date of dates) {
-      date.addEventListener("dblclick", updateTask);
+      date.addEventListener("change", updateDate);
     }
   };
+
+
 
   // ^_^
   return {

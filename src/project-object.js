@@ -30,7 +30,7 @@ const project = (name) => {
 
       taskTitle.textContent = taskArray[i].title;
       taskNote.textContent = taskArray[i].note;
-      taskDate.textContent = taskArray[i].date;
+      taskDate.value = taskArray[i].date;
       taskDOM.appendChild(taskTitle);
       taskDOM.appendChild(taskNote);
       taskDOM.appendChild(taskDate);
