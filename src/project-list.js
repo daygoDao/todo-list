@@ -91,7 +91,6 @@ const projectList = () => {
       const chosen = document.querySelector(".projects").children[i].className;
       if (chosen.includes("chosenProject")) {
         chosenProjectIndex = i;
-        console.log("chosen proj index is ", chosenProjectIndex);
       }
     }
   };
@@ -151,13 +150,14 @@ const projectList = () => {
     deleteProjectButt();
     deleteTaskButt();
     projectNameUpdate();
+    taskTitleUpdate();
   };
 
   const deleteProject = (e) => {
     const projects = document.querySelectorAll(".project");
     let index = 0;
     for (let project of projects) {
-      console.log('ayp',project.children[0]);
+      console.log("ayp", project.children[0]);
       if (project.children[1] == e.target) {
         console.log("in here");
         list.splice(index, 1);
@@ -225,15 +225,15 @@ const projectList = () => {
     for (let proj of projects) {
       proj.addEventListener("dblclick", changeProjName);
     }
-  }; 
+  };
 
   //update task title, note, date when dbl click
-  /*   const taskTitleUpdate = () => {
+  const taskTitleUpdate = () => {
     const tasks = document.querySelectorAll("task");
     for (let task of tasks) {
       console.log(task);
     }
-  }; */
+  };
 
   return {
     chosenProjectIndex,

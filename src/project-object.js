@@ -1,40 +1,44 @@
-import task from './task-object';
-import resetTasks from './resetTaskDOM';
+import task from "./task-object";
+import resetTasks from "./resetTaskDOM";
 
 const project = (name) => {
-	name = name;
-	const taskArray = [];
+  name = name;
+  const taskArray = [];
 
-	const addTask = (task) => {
-		taskArray.push(task);
-	};
+  const addTask = (task) => {
+    taskArray.push(task);
+  };
 
-	///////////////////
-	// task section //
+  ///////////////////
+  // task section //
 
-	// display task list from current project that is selected
-	const displaytasks = () => {
-		resetTasks();
-		for (let i = 0; i < taskArray.length; i++) {
-			const taskDOM = document.createElement('li');
-			const taskTitle = document.createElement('span');
-			const taskNote = document.createElement('span');
-			const taskDate = document.createElement('span');
+  // display task list from current project that is selected
+  const displaytasks = () => {
+    resetTasks();
+    for (let i = 0; i < taskArray.length; i++) {
+      const taskDOM = document.createElement("li");
+      const taskTitle = document.createElement("span");
+      const taskNote = document.createElement("span");
+      const taskDate = document.createElement("span");
 
-			taskDOM.classList.add('task');
+      taskTitle.classList.add("title");
+      taskNote.classList.add("note");
+      taskDate.classList.add("date");
 
-			taskTitle.textContent = taskArray[i].title;
-			taskNote.textContent = taskArray[i].note;
-			taskDate.textContent = taskArray[i].date;
-			taskDOM.appendChild(taskTitle);
-			taskDOM.appendChild(taskNote);
-			taskDOM.appendChild(taskDate);
+      taskDOM.classList.add("task");
 
-			document.querySelector('.content').appendChild(taskDOM);
-		}
-	};
+      taskTitle.textContent = taskArray[i].title;
+      taskNote.textContent = taskArray[i].note;
+      taskDate.textContent = taskArray[i].date;
+      taskDOM.appendChild(taskTitle);
+      taskDOM.appendChild(taskNote);
+      taskDOM.appendChild(taskDate);
 
-	return { name, taskArray, addTask, displaytasks };
+      document.querySelector(".content").appendChild(taskDOM);
+    }
+  };
+
+  return { name, taskArray, addTask, displaytasks };
 };
 
 export default project;
