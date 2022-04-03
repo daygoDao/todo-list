@@ -23,6 +23,7 @@ const projectList = () => {
     //update DOM
     resetProjectList();
     addProjectListDOM();
+	deleteProjectButt();
   };
 
   // add button to dom
@@ -73,8 +74,7 @@ const projectList = () => {
         // display tasks when said project is clicked
         list[chosenProjectIndex].displaytasks();
         addTaskButt();
-		deleteTaskButt();
-
+        deleteTaskButt();
       };
       projectDOM.addEventListener("click", activeList);
       projectDOM.classList.add("project");
@@ -88,7 +88,7 @@ const projectList = () => {
   const findChosenProject = () => {
     for (let i = 0; i < list.length; i++) {
       const chosen = document.querySelector(".projects").children[i].className;
-	  if (chosen.includes("chosenProject")) {
+      if (chosen.includes("chosenProject")) {
         chosenProjectIndex = i;
       }
     }
@@ -128,7 +128,7 @@ const projectList = () => {
     localStorage.setItem("projectList", JSON.stringify(list));
     list[chosenProjectIndex].displaytasks();
     addTaskButt();
-	deleteTaskButt();
+    deleteTaskButt();
     // reset modal form
     form.elements[0].value = "";
     form.elements[1].value = "";
@@ -150,6 +150,21 @@ const projectList = () => {
     deleteTaskButt();
   };
 
+  const deleteProject = (e) => {
+    const projects = document.querySelectorAll(".project");
+    let index = 0;
+    for (let project of projects) {
+      if (project.children[0] == e.target) {
+        console.log("in here");
+        list.splice(index, 1);
+        localStorage.setItem("projectList", JSON.stringify(list));
+		resetProjectList();
+        addProjectListDOM();
+		deleteProjectButt();
+      }
+      index++;
+    }
+  };
   //function to delete obj from list
   const deleteProjectButt = () => {
     const projects = document.querySelectorAll(".project");
@@ -157,6 +172,7 @@ const projectList = () => {
       const delButton = document.createElement("button");
       delButton.classList.add("delProject");
       delButton.textContent = "x";
+      delButton.addEventListener("click", deleteProject);
       project.appendChild(delButton);
     }
   };
@@ -166,20 +182,14 @@ const projectList = () => {
     let index = 0;
     for (let task of tasks) {
       if (task.children[3] == e.target) {
-		//   console.log(tasks[index])
-		//   console.log(task)
-		//   console.log(index)
-		// tasks.removeChild(task);
-        // remove task at this index
         list[chosenProjectIndex].taskArray.splice(index, 1);
-		localStorage.setItem("projectList", JSON.stringify(list));
-		list[chosenProjectIndex].displaytasks();
-		addTaskButt();
-		deleteTaskButt();
+        localStorage.setItem("projectList", JSON.stringify(list));
+        list[chosenProjectIndex].displaytasks();
+        addTaskButt();
+        deleteTaskButt();
       }
       index++;
     }
-    //   console.log(e.target)
   };
   //function to delete obj from list
   const deleteTaskButt = () => {
