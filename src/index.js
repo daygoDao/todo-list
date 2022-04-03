@@ -33,3 +33,4 @@ if (!localStorage.getItem('projectList')) {
 }
 
 listOfProjects.initDisplay();
+

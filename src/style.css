@@ -11,6 +11,11 @@ main {
   border: 5px solid lightblue;
 }
 
+.project {
+  display: grid;
+  grid-template-columns: 1fr 0.25fr;
+}
+
 .content {
   border: 5px solid salmon;
 }
@@ -47,6 +52,22 @@ ul {
 
 .task {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 0.25fr;
   /* justify-items: center; */
+}
+
+li:hover {
+  background-color: lightblue;
+}
+
+.delProject,
+.delTask {
+  width: 1rem;
+  height: 1rem;
+  display: none;
+}
+
+li.project:hover .delProject,
+li.task:hover .delTask{
+	display: block;
 }
