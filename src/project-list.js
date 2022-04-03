@@ -211,9 +211,11 @@ const projectList = () => {
   const changeProjName = (e) => {
     // console.log(e.target.textContent)
     let newName = prompt("new name?", e.target.textContent);
+    if(newName == null) return '';
+    console.log(newName);
     e.target.textContent = newName;
     // save to localStorage
-    console.log("changeprojname", chosenProjectIndex);
+    // console.log("changeprojname", chosenProjectIndex);
     list[chosenProjectIndex].name = newName;
     localStorage.setItem("projectList", JSON.stringify(list));
   };
@@ -232,6 +234,7 @@ const projectList = () => {
     const notes = document.querySelectorAll(".note");
 
     let newnew = prompt("new info", e.target.textContent);
+    if(newnew == null) return '';
     e.target.textContent = newnew;
     let taskIndex = 0;
     for (let title of titles) {
@@ -272,7 +275,7 @@ const projectList = () => {
     }
     // save to localStorage
     localStorage.setItem("projectList", JSON.stringify(list));
-  }
+  };
 
   const taskUpdate = () => {
     const titles = document.querySelectorAll(".title");
@@ -288,8 +291,6 @@ const projectList = () => {
       date.addEventListener("change", updateDate);
     }
   };
-
-
 
   // ^_^
   return {
