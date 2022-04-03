@@ -10,8 +10,8 @@ todo
 
 - [x] need to be able to add tasks to project
 - [x] need to be able to add project to project list
-- [ ] be able to delete task
-- [ ] be able to delete project
+- [x] be able to delete task
+- [x] be able to delete project
 - [ ] allow create, update, delete to update localStorage
-    + change project, task , note, and date content appropriately on updates
-    + onhover project and tasks that will display delete, x
+    + [ ] change project, task , note, and date content appropriately on updates
+    + [x] onhover project and tasks that will display delete, x
