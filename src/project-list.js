@@ -70,11 +70,11 @@ const projectList = () => {
         }
         projectDOM.classList.add("chosenProject");
         findChosenProject();
-		console.log(`the chosen project index is ${chosenProjectIndex}`)
         // display tasks when said project is clicked
-        // console.log(chosenProjectIndex);
         list[chosenProjectIndex].displaytasks();
         addTaskButt();
+		deleteTaskButt();
+
       };
       projectDOM.addEventListener("click", activeList);
       projectDOM.classList.add("project");
@@ -128,6 +128,7 @@ const projectList = () => {
     localStorage.setItem("projectList", JSON.stringify(list));
     list[chosenProjectIndex].displaytasks();
     addTaskButt();
+	deleteTaskButt();
     // reset modal form
     form.elements[0].value = "";
     form.elements[1].value = "";
@@ -165,9 +166,16 @@ const projectList = () => {
     let index = 0;
     for (let task of tasks) {
       if (task.children[3] == e.target) {
+		//   console.log(tasks[index])
+		//   console.log(task)
+		//   console.log(index)
+		// tasks.removeChild(task);
         // remove task at this index
-        list.taskArray.splice(index, 1);
-        localStorage.setItem("projectList", JSON.stringify(list));
+        list[chosenProjectIndex].taskArray.splice(index, 1);
+		localStorage.setItem("projectList", JSON.stringify(list));
+		list[chosenProjectIndex].displaytasks();
+		addTaskButt();
+		deleteTaskButt();
       }
       index++;
     }
