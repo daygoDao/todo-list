@@ -236,23 +236,20 @@ const projectList = () => {
     let newnew = prompt("new info", e.target.textContent);
     if(newnew == null) return '';
     e.target.textContent = newnew;
-    let taskIndex = 0;
+    let titleIndex = 0;
     for (let title of titles) {
       if (title == e.target) {
         console.log("home run");
         console.log(list[chosenProjectIndex].taskArray[titleIndex]);
         list[chosenProjectIndex].taskArray[titleIndex].title = newnew;
-        // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
       }
-      taskIndex++;
+      titleIndex++;
     }
     let noteIndex = 0;
     for (let note of notes) {
       if (note == e.target) {
         console.log("home run");
-        //console.log(list[chosenProjectIndex].taskArray[noteIndex]);
         list[chosenProjectIndex].taskArray[noteIndex].note = newnew;
-        // console.log(list[chosenProjectIndex].taskArray[taskIndex].title);
       }
       noteIndex++;
     }
