@@ -23,7 +23,7 @@ const projectList = () => {
     //update DOM
     resetProjectList();
     addProjectListDOM();
-	deleteProjectButt();
+    deleteProjectButt();
   };
 
   // add button to dom
@@ -63,7 +63,7 @@ const projectList = () => {
     // display each project to DOM
     for (let i = 0; i < list.length; i++) {
       const projectDOM = document.createElement("li");
-
+      const projectName = document.createElement("span");
       // add event listener to catch when project section is clicked
       const activeList = (e) => {
         for (let i = 0; i < list.length; i++) {
@@ -78,7 +78,8 @@ const projectList = () => {
       };
       projectDOM.addEventListener("click", activeList);
       projectDOM.classList.add("project");
-      projectDOM.textContent = list[i].name;
+      projectName.textContent = list[i].name;
+      projectDOM.appendChild(projectName);
       projectsDOM.appendChild(projectDOM);
     }
     addProjectButt();
@@ -90,6 +91,7 @@ const projectList = () => {
       const chosen = document.querySelector(".projects").children[i].className;
       if (chosen.includes("chosenProject")) {
         chosenProjectIndex = i;
+        console.log('chosen proj index is ', chosenProjectIndex)
       }
     }
   };
@@ -148,6 +150,7 @@ const projectList = () => {
     addTaskButt();
     deleteProjectButt();
     deleteTaskButt();
+    projectNameUpdate()
   };
 
   const deleteProject = (e) => {
@@ -158,9 +161,9 @@ const projectList = () => {
         console.log("in here");
         list.splice(index, 1);
         localStorage.setItem("projectList", JSON.stringify(list));
-		resetProjectList();
+        resetProjectList();
         addProjectListDOM();
-		deleteProjectButt();
+        deleteProjectButt();
       }
       index++;
     }
@@ -200,6 +203,26 @@ const projectList = () => {
       delButton.textContent = "x";
       delButton.addEventListener("click", deleteTask);
       task.appendChild(delButton);
+    }
+  };
+
+  // update project name on DOM and localStorage on click
+  const changeProjName = (e) => {
+    // console.log(e.target.textContent)
+    let newName = prompt('new name?', e.target.textContent)
+    e.target.textContent = newName;
+    // save to localStorage
+    console.log('changeprojname' ,chosenProjectIndex)
+    list[chosenProjectIndex].name = newName;
+    localStorage.setItem("projectList", JSON.stringify(list));
+  }
+
+  const projectNameUpdate = () => {
+    const projects = document.querySelectorAll(".projects span");
+    findChosenProject();
+
+    for (let proj of projects) {
+      proj.addEventListener('dblclick', changeProjName)
     }
   };
 
