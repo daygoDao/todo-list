@@ -4,8 +4,8 @@ import task from './task-object';
 import './style.css';
 
 // demo task obj
-const task1 = task('yo', 'yo', 1, 2);
-const task2 = task('ayo', 'yoyo', 11, 32);
+const task1 = task('yo', 'yo', '2022-05-07');
+const task2 = task('ayo', 'yoyo', '2022-05-07');
 
 // demo project obj
 const project1 = project('demo project');
@@ -32,16 +32,4 @@ if (!localStorage.getItem('projectList')) {
 	localStorage.setItem('projectList', JSON.stringify(listOfProjects.list));
 }
 
-// window.onload()
-
-// init display project list and butt to DOM
-/* let stuff = JSON.parse(localStorage.getItem('projectList'));
-console.log(stuff[0]);
-
-listOfProjects.addProjectListDOM();
-
-//display to page initally the tasks of the first project
-listOfProjects.list[0].displaytasks();
-listOfProjects.addTaskButt();
- */
 listOfProjects.initDisplay();

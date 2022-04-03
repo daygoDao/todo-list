@@ -13,3 +13,5 @@ todo
 - [ ] be able to delete task
 - [ ] be able to delete project
 - [ ] allow create, update, delete to update localStorage
+    + change project, task , note, and date content appropriately on updates
+    + onhover project and tasks that will display delete, x
