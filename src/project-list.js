@@ -75,6 +75,7 @@ const projectList = () => {
         list[chosenProjectIndex].displaytasks();
         addTaskButt();
         deleteTaskButt();
+        taskUpdate();
       };
       projectDOM.addEventListener("click", activeList);
       projectDOM.classList.add("project");
@@ -209,7 +210,7 @@ const projectList = () => {
   // update project name on DOM and localStorage on click
   const changeProjName = (e) => {
     let newName = prompt("new name?", e.target.textContent);
-    if(newName == null) return '';
+    if (newName == null) return "";
     console.log(newName);
     e.target.textContent = newName;
     // save to localStorage
@@ -231,7 +232,7 @@ const projectList = () => {
     const notes = document.querySelectorAll(".note");
 
     let newnew = prompt("new info", e.target.textContent);
-    if(newnew == null) return '';
+    if (newnew == null) return "";
     e.target.textContent = newnew;
     let titleIndex = 0;
     for (let title of titles) {
