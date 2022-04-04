@@ -65,6 +65,10 @@ li:hover {
   display: none;
 }
 li.project:hover .delProject,
-li.task:hover .delTask{
-	display: block;
+li.task:hover .delTask {
+  display: block;
+}
+
+input[type=date] {
+  color: salmon;
 }
