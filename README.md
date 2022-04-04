@@ -12,6 +12,7 @@ todo
 - [x] need to be able to add project to project list
 - [x] be able to delete task
 - [x] be able to delete project
-- [ ] allow create, update, delete to update localStorage
-    + [ ] change project, task , note, and date content appropriately on updates
+- [x] allow create, update, delete to update localStorage
+    + [x] change project, task , note, and date content appropriately on updates
     + [x] onhover project and tasks that will display delete, x
+- [ ] sort task list by priority(based on date, past and soon due are 0, else 1)
