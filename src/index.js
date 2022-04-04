@@ -4,8 +4,8 @@ import task from './task-object';
 import './style.css';
 
 // demo task obj
-const task1 = task('yo', 'yo', '2022-05-07');
-const task2 = task('ayo', 'yoyo', '2022-05-07');
+const task1 = task('whatwothuh', 'double click on the task attribute to change its content', '2022-05-07');
+const task2 = task('double click this to change its name', 'yoyo', '2022-05-07');
 
 // demo project obj
 const project1 = project('demo project');

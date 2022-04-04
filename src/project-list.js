@@ -153,13 +153,13 @@ const projectList = () => {
     taskUpdate();
   };
 
+  // function to delete the project on DOM and localStorage
   const deleteProject = (e) => {
     const projects = document.querySelectorAll(".project");
     let index = 0;
     for (let project of projects) {
       console.log("ayp", project.children[0]);
       if (project.children[1] == e.target) {
-        console.log("in here");
         list.splice(index, 1);
         localStorage.setItem("projectList", JSON.stringify(list));
         resetProjectList();
@@ -169,7 +169,6 @@ const projectList = () => {
       index++;
     }
   };
-  //function to delete obj from list
   const deleteProjectButt = () => {
     const projects = document.querySelectorAll(".project");
     for (let project of projects) {
@@ -181,6 +180,7 @@ const projectList = () => {
     }
   };
 
+  // function: delete task button
   const deleteTask = (e) => {
     const tasks = document.querySelectorAll(".task");
     let index = 0;
@@ -195,7 +195,6 @@ const projectList = () => {
       index++;
     }
   };
-  //function to delete obj from list
   const deleteTaskButt = () => {
     const tasks = document.querySelectorAll(".task");
     for (let task of tasks) {
@@ -209,13 +208,11 @@ const projectList = () => {
 
   // update project name on DOM and localStorage on click
   const changeProjName = (e) => {
-    // console.log(e.target.textContent)
     let newName = prompt("new name?", e.target.textContent);
     if(newName == null) return '';
     console.log(newName);
     e.target.textContent = newName;
     // save to localStorage
-    // console.log("changeprojname", chosenProjectIndex);
     list[chosenProjectIndex].name = newName;
     localStorage.setItem("projectList", JSON.stringify(list));
   };
@@ -248,7 +245,6 @@ const projectList = () => {
     let noteIndex = 0;
     for (let note of notes) {
       if (note == e.target) {
-        console.log("home run");
         list[chosenProjectIndex].taskArray[noteIndex].note = newnew;
       }
       noteIndex++;
