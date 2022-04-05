@@ -1,14 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px dotted salmon;
+}
 header {
-  border: 5px solid skyblue;
+  display: flex;
+  border: 5px dotted skyblue;
   text-align: center;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  width: 100%;
 }
 .projects {
-  border: 5px solid lightblue;
+  border: 5px dotted lightblue;
 }
 
 .project {
@@ -17,7 +26,12 @@ main {
 }
 
 .content {
-  border: 5px solid salmon;
+  border: 5px dotted skyblue;
+}
+
+.projectList,
+.taskSection {
+  padding: 1rem;
 }
 
 .chosenProject {
